@@ -108,4 +108,3 @@ SELECT TRUNCATE(DATEDIFF(hire_date, curdate()) / 365 * -1 , 2) AS years
 FROM employees
 WHERE MONTH(birth_date) = 12 AND DAY(birth_date) = 25
 AND YEAR(hire_date) BETWEEN 1990 AND 1999;
-
