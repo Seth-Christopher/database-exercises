@@ -14,4 +14,12 @@ WHERE name = 'Dangerous';
 
 SELECT *
 FROM albums
-WHERE release_date between 1990 and 1995;
+WHERE release_date between 1990 and 1999;
+
+SELECT *
+FROM albums
+WHERE sales < 20;
+
+SELECT *
+FROM albums
+WHERE genre = 'Rock';
