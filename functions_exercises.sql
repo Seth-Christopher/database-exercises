@@ -89,11 +89,22 @@ SELECT *
 FROM employees
 WHERE MONTH(birth_date) = 12 AND DAY(birth_date) = 25;
 
+# Javier's shortcut below
+SELECT *
+FROM employees
+WHERE birth_date LIKE '%12-25';
+
 # Find all employees hired in the 90s and born on Christmas — 362 rows.
 SELECT *
 FROM employees
 WHERE MONTH(birth_date) = 12 AND DAY(birth_date) = 25
 AND YEAR(hire_date) between 1990 and 1999;
+
+# Javier's shortcut below
+SELECT *
+FROM employees
+WHERE birth_date LIKE '%12-25' AND hire_date LIKE '199%'
+ORDER BY birth_date, hire_date DESC;
 
 # Change the query for employees hired in the 90s and born on Christmas such that the first result is the oldest employee who was hired last. It should be Khun Bernini.
 SELECT *
@@ -107,4 +118,11 @@ ORDER BY YEAR(hire_date) DESC;
 SELECT TRUNCATE(DATEDIFF(hire_date, curdate()) / 365 * -1 , 2) AS years
 FROM employees
 WHERE MONTH(birth_date) = 12 AND DAY(birth_date) = 25
-AND YEAR(hire_date) BETWEEN 1990 AND 1999;
+AND YEAR(hire_date) BETWEEN 1990 AND 1999
+ORDER BY years DESC;
+
+# Javier's shortcut below
+SELECT *, DATEDIFF(NOW(), hire_date) / 365 AS days_served
+FROM employees
+WHERE birth_date LIKE '%12-25' AND hire_date LIKE '199%'
+ORDER BY days_served DESC;
