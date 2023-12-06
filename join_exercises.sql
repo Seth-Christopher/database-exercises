@@ -46,3 +46,11 @@ JOIN departments
     ON dept_emp.dept_no = departments.dept_no
 JOIN salaries
     ON salaries.emp_no = dept_emp.emp_no AND salaries.to_date LIKE '9%';
+
+SELECT CONCAT(first_name, ' ',  last_name) AS name, birth_date
+FROM employees
+WHERE emp_no IN (
+    SELECT emp_no
+    FROM dept_manager
+)
+LIMIT 10;
